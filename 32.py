@@ -5,14 +5,32 @@ class Personne:
 
     @property
     def age(self):
+        """Récupère la valeur de l'âge."""
         return self._age
 
     @age.setter
     def age(self, valeur):
+        """Définit l'âge avec des contrôles de sécurité."""
         if not isinstance(valeur, int):
-            raise TypeError("L'âge doit être un entier")
+            raise TypeError("Entrez une val INT")
         if valeur < 0:
-            raise ValueError("L'âge ne peut pas être négatif")
-        if valeur > 150:
-            raise ValueError("L'âge semble irréaliste")
+            raise ValueError("La val ne peut pas etre moins que 0")
+        if valeur > 140:
+            raise ValueError("L'Age ici est irrealiste")
+        
         self._age = valeur
+
+    def se_presenter(self):
+        """Retourne une chaîne de présentation."""
+        return f"Je suis {self._nom}, {self._age} ans"
+
+personne1 = Personne("Salim", 21)
+personne2 = Personne("EL BOURMAKI", 19)
+personne3 = Personne("Ahmed", 32)
+
+print(personne1.se_presenter()) 
+print(personne2.se_presenter()) 
+print(personne3.se_presenter()) 
+
+personne1.age = 22 
+print(f"Nouvel âge de Salim : {personne1.age}")
